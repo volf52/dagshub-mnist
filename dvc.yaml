@@ -1,0 +1,21 @@
+stages:
+  featurization:
+    cmd: python dagshub_mnist/featurization.py
+    deps:
+    - dagshub_mnist/featurization.py
+    - data/test_data.csv
+    - data/train_data.csv
+    outs:
+    - ./data/norm_params.json
+    - ./data/processed_test_data.npy
+    - ./data/processed_train_data.npy
+  training:
+    cmd: python dagshub_mnist/train_model.py
+    deps:
+    - dagshub_mnist/train_model.py
+    - data/processed_train_data.npy
+    outs:
+    - artifacts/model.pkl
+    metrics:
+    - metrics/train_metric.json:
+        cache: false

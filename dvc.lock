@@ -1,0 +1,44 @@
+schema: '2.0'
+stages:
+  featurization:
+    cmd: python dagshub_mnist/featurization.py
+    deps:
+    - path: dagshub_mnist/featurization.py
+      md5: b38389397bb12808cc6c676bec613de0
+      size: 1085
+    - path: data/test_data.csv
+      md5: c807df8d6d804ab2647fc15c3d40f543
+      size: 18289443
+    - path: data/train_data.csv
+      md5: 5b49cf1b57fb9d6102b559d59d99df7c
+      size: 109575994
+    outs:
+    - path: ./data/norm_params.json
+      md5: e46984ac8b7097bfddfe5d9210f78ca4
+      size: 54
+      isexec: true
+    - path: ./data/processed_test_data.npy
+      md5: 9ee0468925c998fda26d197a14d1caec
+      size: 376800128
+      isexec: true
+    - path: ./data/processed_train_data.npy
+      md5: 9ee0468925c998fda26d197a14d1caec
+      size: 376800128
+      isexec: true
+  training:
+    cmd: python dagshub_mnist/train_model.py
+    deps:
+    - path: dagshub_mnist/train_model.py
+      md5: 32356973305865be862658cd77287aaa
+      size: 1050
+    - path: data/processed_train_data.npy
+      md5: 9ee0468925c998fda26d197a14d1caec
+      size: 376800128
+    outs:
+    - path: artifacts/model.pkl
+      md5: 43c6f8bb447a9454cb6310da71abf7dc
+      size: 25145720
+      isexec: true
+    - path: metrics/train_metric.json
+      md5: b153b1179fc0675df7c2af809d420083
+      size: 34
