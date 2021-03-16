@@ -1,0 +1,11 @@
+md5: 42b4f71a6ac1eae99f27f00839019c80
+frozen: true
+deps:
+- etag: '"529e8334-1171323"'
+  size: 18289443
+  path: https://pjreddie.com/media/files/mnist_test.csv
+outs:
+- md5: c807df8d6d804ab2647fc15c3d40f543
+  size: 18289443
+  path: test_data.csv
+  isexec: true

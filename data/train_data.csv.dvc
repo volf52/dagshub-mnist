@@ -1,0 +1,11 @@
+md5: d343543021b07a5611777ef47d7e139e
+frozen: true
+deps:
+- etag: '"529e832d-687ff3a"'
+  size: 109575994
+  path: https://pjreddie.com/media/files/mnist_train.csv
+outs:
+- md5: 5b49cf1b57fb9d6102b559d59d99df7c
+  size: 109575994
+  path: train_data.csv
+  isexec: true
