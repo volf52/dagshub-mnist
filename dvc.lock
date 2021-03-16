@@ -42,3 +42,19 @@ stages:
     - path: metrics/train_metric.json
       md5: b153b1179fc0675df7c2af809d420083
       size: 34
+  eval:
+    cmd: python dagshub_mnist/eval.py
+    deps:
+    - path: artifacts/model.pkl
+      md5: 43c6f8bb447a9454cb6310da71abf7dc
+      size: 25145720
+    - path: dagshub_mnist/eval.py
+      md5: d7d9adbbe25d35f525fbbd8c59578d58
+      size: 718
+    - path: data/processed_test_data.npy
+      md5: 9ee0468925c998fda26d197a14d1caec
+      size: 376800128
+    outs:
+    - path: metrics/eval.json
+      md5: fc3231177e4419dd0a32f482a80ffd53
+      size: 16

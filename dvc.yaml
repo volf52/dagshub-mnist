@@ -19,3 +19,12 @@ stages:
     metrics:
     - metrics/train_metric.json:
         cache: false
+  eval:
+    cmd: python dagshub_mnist/eval.py
+    deps:
+    - artifacts/model.pkl
+    - dagshub_mnist/eval.py
+    - data/processed_test_data.npy
+    metrics:
+    - metrics/eval.json:
+        cache: false
