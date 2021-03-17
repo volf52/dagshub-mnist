@@ -4,8 +4,8 @@ stages:
     cmd: python dagshub_mnist/featurization.py
     deps:
     - path: dagshub_mnist/featurization.py
-      md5: b38389397bb12808cc6c676bec613de0
-      size: 1085
+      md5: b90e1121ad5250313493e2dd077cde62
+      size: 1203
     - path: data/test_data.csv
       md5: c807df8d6d804ab2647fc15c3d40f543
       size: 18289443
@@ -14,16 +14,16 @@ stages:
       size: 109575994
     outs:
     - path: ./data/norm_params.json
-      md5: e46984ac8b7097bfddfe5d9210f78ca4
-      size: 54
+      md5: 9ab849f748d696253db02e59cce04ef6
+      size: 138795
       isexec: true
     - path: ./data/processed_test_data.npy
-      md5: 9ee0468925c998fda26d197a14d1caec
-      size: 376800128
+      md5: c84941cc9b5e068e2c036da55fdcb38f
+      size: 7680128
       isexec: true
     - path: ./data/processed_train_data.npy
-      md5: 9ee0468925c998fda26d197a14d1caec
-      size: 376800128
+      md5: c84941cc9b5e068e2c036da55fdcb38f
+      size: 7680128
       isexec: true
   training:
     cmd: python dagshub_mnist/train_model.py
@@ -32,29 +32,29 @@ stages:
       md5: 32356973305865be862658cd77287aaa
       size: 1050
     - path: data/processed_train_data.npy
-      md5: 9ee0468925c998fda26d197a14d1caec
-      size: 376800128
+      md5: c84941cc9b5e068e2c036da55fdcb38f
+      size: 7680128
     outs:
     - path: artifacts/model.pkl
-      md5: 43c6f8bb447a9454cb6310da71abf7dc
-      size: 25145720
+      md5: 212ed1a371dda1a0304ce54eb34caed4
+      size: 548944
       isexec: true
     - path: metrics/train_metric.json
-      md5: b153b1179fc0675df7c2af809d420083
+      md5: a65665f6ce91dee7e13b61a95bb4f312
       size: 34
   eval:
     cmd: python dagshub_mnist/eval.py
     deps:
     - path: artifacts/model.pkl
-      md5: 43c6f8bb447a9454cb6310da71abf7dc
-      size: 25145720
+      md5: 212ed1a371dda1a0304ce54eb34caed4
+      size: 548944
     - path: dagshub_mnist/eval.py
-      md5: d7d9adbbe25d35f525fbbd8c59578d58
-      size: 718
+      md5: d97fb8302f15a572b1d4c45f14ed81b6
+      size: 668
     - path: data/processed_test_data.npy
-      md5: 9ee0468925c998fda26d197a14d1caec
-      size: 376800128
+      md5: c84941cc9b5e068e2c036da55fdcb38f
+      size: 7680128
     outs:
     - path: metrics/eval.json
-      md5: fc3231177e4419dd0a32f482a80ffd53
-      size: 16
+      md5: f6a831f4724525b59045ec9968ec173f
+      size: 27

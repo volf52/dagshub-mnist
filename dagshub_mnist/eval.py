@@ -3,7 +3,6 @@ import pickle
 
 import numpy as np
 from sklearn.metrics import accuracy_score
-from sklearn.multiclass import OneVsOneClassifier
 
 
 def eval_model():
