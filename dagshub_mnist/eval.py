@@ -2,22 +2,25 @@ import json
 import pickle
 
 import numpy as np
+import torch
 from sklearn.metrics import accuracy_score
-from sklearn.multiclass import OneVsOneClassifier
 
 
 def eval_model():
     print("Loading data and model...")
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     test_data: np.ndarray = np.load("./data/processed_test_data.npy")
 
     with open("./artifacts/model.pkl", "rb") as f:
-        model = pickle.load(f)
+        model: torch.nn.Module = pickle.load(f)
 
+    model = model.to(device)
+    model.eval()
     labels = test_data[:, 0]
-    data = test_data[:, 1:]
+    data = torch.tensor(test_data[:, 1:].reshape([-1, 1, 28, 28])).float().to(device)
 
     print("Running model on test data...")
-    preds = model.predict(data)
+    preds = model(data).max(1, keepdim=True)[1].cpu().data.numpy()
 
     print("Calculating metrics...")
     metrics = {"acc": accuracy_score(labels, preds)}

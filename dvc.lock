@@ -4,8 +4,8 @@ stages:
     cmd: python dagshub_mnist/featurization.py
     deps:
     - path: dagshub_mnist/featurization.py
-      md5: b38389397bb12808cc6c676bec613de0
-      size: 1085
+      md5: f12d804d8d1844c1893cdcb1a59db850
+      size: 1084
     - path: data/test_data.csv
       md5: c807df8d6d804ab2647fc15c3d40f543
       size: 18289443
@@ -18,8 +18,8 @@ stages:
       size: 54
       isexec: true
     - path: ./data/processed_test_data.npy
-      md5: 9ee0468925c998fda26d197a14d1caec
-      size: 376800128
+      md5: a5257a91e73920bdd4cafd0f88105b74
+      size: 62800128
       isexec: true
     - path: ./data/processed_train_data.npy
       md5: 9ee0468925c998fda26d197a14d1caec
@@ -29,32 +29,32 @@ stages:
     cmd: python dagshub_mnist/train_model.py
     deps:
     - path: dagshub_mnist/train_model.py
-      md5: 32356973305865be862658cd77287aaa
-      size: 1050
+      md5: 67226c971e5ead24817a354ed4628cf8
+      size: 2364
     - path: data/processed_train_data.npy
       md5: 9ee0468925c998fda26d197a14d1caec
       size: 376800128
     outs:
     - path: artifacts/model.pkl
-      md5: 43c6f8bb447a9454cb6310da71abf7dc
-      size: 25145720
+      md5: c69223fb421fe5663609b673683dfb7d
+      size: 1727815
       isexec: true
     - path: metrics/train_metric.json
-      md5: b153b1179fc0675df7c2af809d420083
+      md5: 6bbfca191586cd58e4405d63d2d25b75
       size: 34
   eval:
     cmd: python dagshub_mnist/eval.py
     deps:
     - path: artifacts/model.pkl
-      md5: 43c6f8bb447a9454cb6310da71abf7dc
-      size: 25145720
+      md5: c69223fb421fe5663609b673683dfb7d
+      size: 1727815
     - path: dagshub_mnist/eval.py
-      md5: d7d9adbbe25d35f525fbbd8c59578d58
-      size: 718
+      md5: e9498663bef7035c3cc308a7eff6d6d9
+      size: 911
     - path: data/processed_test_data.npy
-      md5: 9ee0468925c998fda26d197a14d1caec
-      size: 376800128
+      md5: a5257a91e73920bdd4cafd0f88105b74
+      size: 62800128
     outs:
     - path: metrics/eval.json
-      md5: fc3231177e4419dd0a32f482a80ffd53
-      size: 16
+      md5: 186dbb7d4d9a00aba12094875bea62a7
+      size: 15
