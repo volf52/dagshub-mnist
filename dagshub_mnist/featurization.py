@@ -11,7 +11,7 @@ import pandas as pd
 def featurization():
     print("Loading datasets...")
     train_data = pd.read_csv("./data/train_data.csv", header=None, dtype=float)
-    test_data = pd.read_csv("./data/train_data.csv", header=None, dtype=float)
+    test_data = pd.read_csv("./data/test_data.csv", header=None, dtype=float)
 
     # Normalize the train data
     print("Normalizing data...")
